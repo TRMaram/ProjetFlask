@@ -84,11 +84,68 @@
                       <div class="container-fluid" style="align-items: center;justify-content: center;display: flex;">
 
                           <form action="" class="search-bar">
-                              <input type="search" placeholder=".......Search" name="search">
-                              <button type="submit"  >Search</button>
-                          </form>
 
-                          <a href="Searchform.html" style="font-palette: blue; font-size: 20px; text-decoration: underline blue"> Advanced Search</a>
+                              <input type="search" placeholder=".......Search " name="search">
+
+                              <button type="submit"  >Search</button>
+                              </form>
+                      </div>
+                          <form>
+                              <div class="mb-3 mt-3">
+                    <label for="Emplacement" class="form-label">Emplacement:</label>
+                    <input type="text" class="form-control" id="Emplacement" placeholder="Enter Emplacement" name="Emplacement">
+                  </div>
+                              <div class="mb-3 mt-3">
+                    <label for="Domaine" class="form-label">Domaine:</label>
+                    <input  list="domaine" class="form-control" id="Domaine" placeholder="Enter Domaine" name="Domaine">
+
+                                  <datalist id="domaine">
+                                    <option value="Education Physique">Education Physique</option>
+                                            <option value="Sport et Fitness">Sport et Fitnes</option>
+                                <option value="Biotechnologie">Biotechnologie</option>
+                                <option value="Fonction publique">Fonction publique</option>
+
+                                <option value="Services veterinaires">Services veterinaires</option>
+
+
+                                <option value="Esthétique">Esthétique</option>
+
+                                <option value="Enseignement">Enseignement</option>
+
+                                <option value="IT">IT</option>
+
+                                    <option value="Consulting">
+                                    <option value="Hôtellerie et Tourisme">
+                                    <option value="Administration">
+                                  </datalist>
+                                                  </div>
+                              <div class="mb-3 mt-3">
+                    <label for="mc" class="form-label">Mots Clés:</label>
+                    <input type="text" class="form-control" id="mc" placeholder="Enter Mots Clés" name="mc">
+                  </div>
+                             <div class="mb-3 mt-3">
+
+                                <label for="ct" class="form-label">Type de Contrat:</label>
+                                <select id="ct" name="ct"  >
+                                      <option value="CDI" selected>CDI</option>
+                                      <option value="CDD">CDD</option>
+                                        <option value="Freelance">Freelance</option>
+                                    <option value="Temps Plein">Temps Plein</option>
+                                    <option value="Temps Partiel">Temps Partiel</option>
+                                    <option value="SIVP">SIVP</option>
+                                    <option value="Saisonier">Saisonier</option>
+                                </select>
+
+                  </div>
+                              <div class="mb-3 mt-3">
+                    <label for="datean" class="form-label">Date de postulation d'annoce:</label>
+                    <input type="date" class="form-control" id="datean" placeholder="Enter Date de postulation d'annoce" name="datean">
+                  </div>
+
+                              <button type="reset" class="btn btn-info"> Reset</button>
+
+                              <button type="submit" class="btn btn-primary"> Filter</button>
+                          </form>
 
                       </div>
           </div>
@@ -117,7 +174,7 @@
                                                             <td>
                                                                 <h6 class="text-muted"><i class="fas fa-circle text-c-green f-10 m-r-15"></i>11 MAY 12:56</h6>
                                                             </td>
-                                                            <td><a href="details.html" class="label theme-bg2 text-white f-12">Voir Détail</a>
+                                                            <td><a href="#!" class="label theme-bg2 text-white f-12">Voir Détail</a>
                                                                 <button type="button"
                                                                         class="label theme-bg text-white f-12"
                                                                         data-bs-toggle="modal"  data-bs-target="#Modal1" style="outline: none">Postuler
