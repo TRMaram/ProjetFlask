@@ -317,3 +317,81 @@ img.icon {width:25px; float:left; height:25px; margin: 7px; position: relative;}
 .h11 {
   color: white;
 }
+
+
+@media all and (max-width: 767px) {
+    .form-control.refine-radius {
+        width:auto;
+        min-width: 250px
+    }
+}
+
+.form-control::-webkit-input-placeholder {
+    text-align: center;
+    color: #eb800e;
+    font-weight: 400;
+    font-family: open sans,sans-serif
+}
+
+.form-control:-moz-placeholder {
+    text-align: center;
+    color: #eb800e;
+    font-weight: 400;
+    font-family: open sans,sans-serif
+}
+
+.form-control::-moz-placeholder {
+    text-align: center;
+    color: #eb800e;
+    font-weight: 400;
+    font-family: open sans,sans-serif
+}
+
+.form-control:-ms-input-placeholder {
+    text-align: center;
+    color: #eb800e;
+    font-weight: 400;
+    font-family: open sans,sans-serif
+}
+
+.form-control__textarea {
+    min-height: 140px
+}
+
+.form-control__centered {
+    background: #fbfbfb;
+    font-size: 14px
+}
+
+.form-control__centered::-webkit-input-placeholder {
+    text-align: center
+}
+
+.form-control__centered:-moz-placeholder {
+    text-align: center
+}
+
+.form-control__centered::-moz-placeholder {
+    text-align: center
+}
+
+.form-control__centered:-ms-input-placeholder {
+    text-align: center
+}
+
+.form-control[disabled] {
+    opacity: .5
+}
+
+.form-control[type=file]:focus,.form-control[type=checkbox]:focus,.form-control[type=radio]:focus {
+    outline: none
+}
+
+.form-label {
+    margin-bottom: 0;
+    font-weight: 400;
+    vertical-align: middle;
+    font-size: 14px;
+    text-align: left;
+    display: block
+}
