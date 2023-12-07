@@ -35,8 +35,13 @@ class User(db.Model):
 
 @app.route('/')
 def index():
+    return render_template('Home.html')
+@app.route('/connexion')
+def connexion():
     return render_template('index.html')
-
+@app.route('/details')
+def details():
+    return render_template('details.html')
 @app.route('/signup', methods=['POST'])
 def signup():
     if request.method == 'POST':
@@ -93,6 +98,7 @@ def send_confirmation_email(name, email):
 def success():
     return render_template('success.html')
 
+
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
     if request.method == 'POST':
@@ -124,7 +130,6 @@ def home():
 if __name__ == '__main__':
     db.create_all()  # Création des tables dans la base de données
     app.run(debug=True)
-
 
 
 
