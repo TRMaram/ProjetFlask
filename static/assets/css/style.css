@@ -7304,6 +7304,7 @@ select.form-control-lg:not([size]):not([multiple]) {
 /* Hover effect */
 .table-hover tbody tr:hover {
   background-color: rgba(4, 169, 245, 0.05);
+  table-layout: fixed;
 }
 
 /* Table backgrounds */

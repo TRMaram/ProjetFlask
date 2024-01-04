@@ -35,6 +35,7 @@
 
   </head>
   <body>
+
   <div class="menu-bar">
    <h1 class="logo">JOB.AT </h1>
 
@@ -82,7 +83,6 @@
                               <button type="submit"  >Search</button>
                           </form>
 
-                          <a href="Searchform.html" style="font-palette: blue; font-size: 20px; text-decoration: underline blue"> Advanced Search</a>
 
                       </div>
           </div>
@@ -91,6 +91,16 @@
 
 
   <br>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <script>
+      var messages = {{ messages | safe }};
+      for (var i=0; i<messages.length; i++) {
+        alert(messages[i]);
+      }
+    </script>
+  {% endif %}
+{% endwith %}
   <br>
   <div  class="col-md-12">
       <div class="card">
@@ -111,8 +121,10 @@
                                                             <td>
                                                                 <h6 class="text-muted"><i class="fas fa-circle text-c-green f-10 m-r-15"></i>11 MAY 12:56</h6>
                                                             </td>
-                                                            <td><a href="details.html" class="label theme-bg2 text-white f-12">Voir Détail</a>
-                                                                <button type="button"
+
+
+                                                            <td><a href="{{ url_for('details') }}"> <button  class="label theme-bg2 text-white f-12"  >Voir Détail</button></a>
+                                                             <button type="button"
                                                                         class="label theme-bg text-white f-12"
                                                                         data-bs-toggle="modal"  data-bs-target="#Modal1" style="outline: none">Postuler
                                                                 </button>
@@ -126,7 +138,12 @@
                                                             <td>
                                                                 <h6 class="text-muted"><i class="fas fa-circle text-c-green f-10 m-r-15"></i>11 MAY 12:56</h6>
                                                             </td>
-                                                            <td><a href="#!" class="label theme-bg2 text-white f-12">Voir Détail</a><a class="label theme-bg text-white f-12">Postuler</a>
+                                                            <td>
+                                                            <a href="{{ url_for('details') }}"> <button  class="label theme-bg2 text-white f-12"  >Voir Détail</button></a>
+                                                                <button type="button"
+                                                                        class="label theme-bg text-white f-12"
+                                                                        data-bs-toggle="modal"  data-bs-target="#Modal1" style="outline: none">Postuler
+                                                                </button>
 
                                                             </td>
                                                         </tr>
@@ -158,7 +175,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-          <form action="">
+          <form action="/postuler" method="post" id="postulerform"  enctype="multipart/form-data">
               <div class="mb-3 mt-3">
                     <label for="nom" class="form-label">Nom:</label>
                     <input type="text" class="form-control" id="nom" placeholder="Enter nom" name="nom">
@@ -184,17 +201,18 @@
                     <input type="file" class="form-control" id="cv"  name="cv">
                   </div>
 
+              <!-- Modal footer -->
+      <div class="modal-footer">
+
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
 
 
           </form>
       </div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
 
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
 
     </div>
   </div>

@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_mail import Mail, Message
 from flask_sqlalchemy import SQLAlchemy
 import os
+import datetime
 
 from werkzeug.security import check_password_hash
 
@@ -31,17 +32,81 @@ class User(db.Model):
     password = db.Column(db.String(100))
     civility = db.Column(db.String(10))
     date_of_birth = db.Column(db.String(20))
-
-
+class candidature(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nom = db.Column(db.String(100))
+    prenom = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    tel = db.Column(db.String(10))
+    dn = db.Column(db.String(20))
+    cv=db.Column(db.LargeBinary)
+class jobs(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    titre = db.Column(db.String)
+    Entreprise = db.Column(db.String)
+    Emplacement = db.Column(db.String)
+    Details = db.Column(db.String)
 @app.route('/')
 def index():
-    return render_template('Home.html')
+    d2 = jobs.query.all()
+    return render_template('Home1.html',d2=d2)
 @app.route('/connexion')
 def connexion():
     return render_template('index.html')
 @app.route('/details')
 def details():
     return render_template('details.html')
+
+
+@app.route('/postuler', methods=['POST'])
+def postuler():
+    if request.method == 'POST':
+        nom = request.form['nom']
+        prenom=request.form['prenom']
+        email = request.form['email']
+        tel = request.form['tel']
+        dn = request.form['dn']
+        date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        cv = request.files['cv'] if 'cv' in request.files else None
+
+
+        # Création d'un nouvel utilisateur et enregistrement dans la base de données
+        new_candidat = candidature(
+            nom=nom,
+            prenom=prenom,
+            email=email,
+            tel=tel,
+            dn=dn,
+            date=date,
+            cv=cv.read()
+            # Ajoutez d'autres champs au besoin
+        )
+        db.session.add(new_candidat)
+        db.session.commit()
+        # Perform your candidat creation logic here
+        # ...
+
+        # For now, let's just print the received data
+        print(f"Name: {nom}")
+        print(f"prenom: {prenom}")
+        print(f"Email: {email}")
+        print(f"Tel {tel}")
+        print(f"Date of Birth: {dn}")
+        if cv:
+            cv_filename = cv.filename  # Retrieve the file name
+            print(f"Uploaded CV: {cv_filename}")
+        msg = Message('Postulation avec Succée',
+                      sender='your-email@example.com',  # Replace with your email address
+                      recipients=[email])
+        msg.body = f"Dear {nom},\nYour post has been successfully submitted! Thank you."
+        mail.send(msg)
+        flash('Your post was successfull')
+        return redirect(url_for('index'))
+    return render_template('index.html')
+
+
+
+
 @app.route('/signup', methods=['POST'])
 def signup():
     if request.method == 'POST':
